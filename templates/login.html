@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>አዴተራ│ መግብያ</title>
+    <link rel="icon" href="{% static 'accounts/img/icon.jpg' %}" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'accounts/login-style.css' %}">
+</head>
+
+<body>
+     <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href="/"><img class="logo" src="{% static 'base-layout/img/logo.png' %}" alt="adettera.com"></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 justify-content-center text-center ">
+                    <form method="POST">{% csrf_token %}
+                        <p class="message">{{message}}</p>
+                        {{ form.username }} <br>
+                        {{ form.password }} <br>
+                        <button type="submit" class="button">ግባ</button>
+                    </form>                    
+                    <a class="fb-button" href="{% url 'social:begin' 'facebook' %}">በ facebook ግባ</a>
+                    <hr class="line">
+                    <p class="info-p">አዲስ ተጠቃሚ ከሆኑ በነጻ ይመዝገቡ</p>
+                    <a class="signup" href="/profile/register/">መመዝገብያ</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

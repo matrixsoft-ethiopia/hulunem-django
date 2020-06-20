@@ -1,0 +1,65 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የሱቅ ምዝገባ</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'shops/add-shop.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color container-bg full-body">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container-h">
+                <img src="{% static 'shops/img/shop.png' %}" alt="shop" height="40px" width="40px">
+                <h1 class='header'>የንግድ ድርጅት መመዝገብያ</h1>
+            </div>
+            <form method="POST" class="form" enctype="multipart/form-data">{% csrf_token %}
+                {% if x == 0 %}
+                <div class="warning-alert">
+                    {{ message }}
+                </div>
+                {% else %}
+                <div class="success-alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                <select name=" enterprise_type"" class="input">
+                    <option>ፋብሪካ</option>
+                    <option>ማከፋፈያ</option>
+                    <option>ሱቅ</option>                    
+                </select>
+                {{ form.name }}
+                {{ form.detail_text }}
+                {{ form.location1 }}
+                {{ form.location2 }}
+                <select name="location3" class="input">
+                    <option>ባህር ዳር</option>
+                    {% for city in city %}
+                    <option>{{ city.name }}</option>
+                    {% endfor %}
+                </select>
+                {{ form.phone_number }}
+                {{ form.TIN_number }}
+                <p class="tin-info-p">የTIN-NO ለማረጋገጥ ፎቶ አንስተው ይላኩ</p>
+                {{ form.mainimage }}
+                <button type="submit" class="register-btn">መዝግብ</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <p class="reg-info-p">
+                ህጋዊ የሱቅ ባለቤት ከሆኑ የሱቁን ሙሉ መረጃ በተዘጋጀው የመሙያ ቅጽ ላይ ሞልተው ማስመዝገብ ይችላሉ። የሱቁን ህጋዊነት በላኩት ፎቶ አማካኝነት ከ 1-2 ቀን
+                በሚወስድ
+                ጊዜ ውስጥ የሚረጋገጥ ይሆናል። የማረጋገጡን ስራ ስንጨርስ መልእክት ይደርስዎታል። ሱቁ ከተረጋገጠ በስሩ እቃዎችን መመዝገብ ይችላሉ። አንድ ደንበኛ አንድ
+                ሱቅ በነጻ ማስመዝገብ የሚችል ሲሆን ከአንድ በላይ ሱቆችን ለማስመዝገብ የአባልነት ምዝገባ ማከናወን ይኖርበታል።
+            </p>
+        </div>
+    </div>
+</div>
+
+</section>
+{% endblock %}

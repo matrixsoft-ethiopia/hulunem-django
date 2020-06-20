@@ -1,0 +1,69 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ መግለጫ</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'accounts/user-page.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color container-bg full-body">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="user-name">
+                {{ user.get_full_name}}
+            </h1>
+            <a class="custom-link" href="{% url 'cart:cart_summary' %}">
+                <div class="cart" id="cart">
+                    <img src="{% static 'products/img/cart2.png' %}" alt="Cart" width="60px" height="60px">
+                    <div>
+                        <h2 class="cart1">ዘምቢል</h2>
+                        <h5 class="cart2">በዘምቢል የተከተቱና ትእዛዝ የሚጠብቁ እቃዎች</h5>
+                    </div>
+                </div>
+            </a>
+            <a class="custom-link" href="{% url 'cart:order-given' %}">
+                <div class="order" id="order">
+                    <img src="{% static 'products/img/order2.png' %}" alt="Cart" width="50px" height="50px">
+                    <div>
+                        <h2 class="order1">ትእዛዝ</h2>
+                        <h5 class="order2">የታዘዙ እቃዎች</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <div class="min-hieght">
+                <h3 class="profile-h">መግለጫ</h3>
+                <h5 class="name-h">ስም፡</h5>
+                <p class="full-name">{{user.get_full_name}}</p>
+                <hr>
+                <h5 class="email-h">ኢሜይል፡</h5>
+                <p class="email">{{user.email}}</p>
+                <hr>
+                <div class="text-right">
+                    <a class="edit" href="{% url 'accounts:edit-profile' %}">ለመቀየር</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">ለመውጣት</button>
+                        <div class="dropdown-content">
+                            <a href="/profile/logout/">ውጣ</a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-left bottom-mrgn">
+                    <h2 class="shop-h">የንግድ ድርጅት ባለቤት ነዎት?</h2>
+                    <div class="display">
+                        <a href="{% url 'shop:shops-list' %}"><div class="open-shop-btn" >የተመዘገበ ለመክፈት</div></a>
+                        <a href="/shops/add/"><div class="new-shop-btn" > አዲስ ለመመዝገብ </div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ ሱቆች</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'shops/shops-list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color full-body">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="category1">
+                <a class='list2' href="{% url 'product:product-list' 1 %}">ኤሌክትሮኒክስ</a>
+                <a class='list2' href="{% url 'product:product-list' 2 %}">የሴቶች አልባሳት </a>
+                <a class='list2' href="{% url 'product:product-list' 3 %}">መዋብያ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 4 %}">የወንዶች አልባሳት</a>
+                <a class='list2' href="{% url 'product:product-list' 5 %}">የልጆች</a>
+                <a class='list2' href="{% url 'product:product-list' 6 %}">የቤት እቃዎች </a>
+                <a class='list2' href="{% url 'product:product-list' 7 %}">ፈርኒቸሮች</a>
+                <a class='list2' href="{% url 'product:product-list' 8 %}">የግምባታ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 9 %}">ማሽነሪዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 10 %}">የእጅ ስራዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 11 %}">መጽሐፎች</a>
+            </div>
+            <div class="logincontainer">
+                {% if user.is_authenticated %}
+                <h1 class="reg-pro-h">የንግድ ድርጅት ለመመዝገብ</h1>
+                <a class="reg-pro-a" href="/shops/add/">አዲስ ድርጅት መዝግብ</a>
+                {% else %}
+                <h1 class="signin-h">መግብያ</h1>
+                <input class="email-input" type="text" placeholder="ኢሜይል">
+                <input class="password-input" type="text" placeholder="የይለፍ ቃል">
+                <input class="checkbox-input" type="checkbox">
+                <p class="stay-p">እንደገቡ ለመቆየት</p>
+                <button class="login-btn">ግባ</button>
+                <p class="info-p">አዲስ ተጠቃሚ ከሆኑ በነጻ ይመዝገቡ</p>
+                <a class="signup-btn" href="accounts/register/">መመዝገብያ</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="shops">
+                <h2 class="results">
+                    የተመዘገቡ ሱቆች ዝርዝር
+                </h2>
+                <hr class="horizontal">
+                {% for obj in object_list %}
+                <a class="shop-link" href="{% url 'shop:shop-detail' pk=obj.pk %}">
+                    <div class="shop-info">
+                        <h2 class="shop-name">{{obj.name}}</h2>
+                        <p class="shop-tin">{{obj.detail_text}}</p>
+                        </div>
+                </a>
+                <hr class="horizontal">
+                {% empty %}
+                <h1>በስሩ የተመዘገበ ድርጅት የለም</h1>
+                <a class="signup" href="/shops/add/">አዲስ ድርጅት መዝግብ</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>
+{% endblock %}

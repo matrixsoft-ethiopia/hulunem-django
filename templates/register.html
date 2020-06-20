@@ -1,0 +1,33 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ መመዝገብያ</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'accounts/register-style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color container-bg full-body">
+    <div class="row">
+        <div class="col-md-12 full">
+            <div class="cont text-center">
+                <h2 class="register-h">መመዝገብያ</h2>
+                <hr>
+                <form method="POST">{% csrf_token %}
+                    {{ form.firstName }} <br>
+                    {{ form.lastName }} <br>
+                    {{ form.email }} <br>
+                    {{ form.password }} <br>
+                    {{ form.password2 }} <br>
+                    <button type="submit" class="button">መዝግብ</button>
+                </form>
+                <a class="fb-button" href="{% url 'social:begin' 'facebook' %}">በ facebook ግባ</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

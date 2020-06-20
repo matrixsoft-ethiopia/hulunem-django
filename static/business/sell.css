@@ -1,0 +1,23 @@
+.full-body{
+    min-height: 80%;
+}
+.cat-h{
+    font-style: bold;
+    color: rgb(27, 118, 172);
+}
+.cat{
+    width: 300px;
+    height: 100px;
+    margin: 15px 5px 15px 5px;
+    padding: 20px 5px 10px 15px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(255, 144, 53);
+    border-radius: 5px;
+}
+.cat:hover{
+    border-color: green;
+}
+.custom-link:hover{
+    text-decoration: none;
+}

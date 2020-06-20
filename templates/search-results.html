@@ -1,0 +1,86 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የፍለጋ ውጤቶች</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'products/products-list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="category1">
+                <a class='list2' href="{% url 'product:product-list' 1 %}">ኤሌክትሮኒክስ</a>
+                <a class='list2' href="{% url 'product:product-list' 2 %}">የሴቶች አልባሳት </a>
+                <a class='list2' href="{% url 'product:product-list' 3 %}">መዋብያ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 4 %}">የወንዶች አልባሳት</a>
+                <a class='list2' href="{% url 'product:product-list' 5 %}">የልጆች</a>
+                <a class='list2' href="{% url 'product:product-list' 6 %}">የቤት እቃዎች </a>
+                <a class='list2' href="{% url 'product:product-list' 7 %}">ፈርኒቸሮች</a>
+                <a class='list2' href="{% url 'product:product-list' 8 %}">የግምባታ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 9 %}">ማሽነሪዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 10 %}">የእጅ ስራዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 11 %}">መጽሐፎች</a>
+            </div>
+            <div class="logincontainer text-center">
+                {% if user.is_authenticated %}
+                <h1 class="reg-pro-h">እቃዎችን ለመመዝገብ</h1>
+                <a class="reg-pro-a" href="/products/add/">አዲስ እቃ መዝግብ</a>
+                {% else %}
+                <h1 class="signin-h">መግብያ</h1>
+                <input class="email-input" type="text" placeholder="ኢሜይል">
+                <input class="password-input" type="text" placeholder="የይለፍ ቃል">
+                <button class="login-btn">ግባ</button>
+                <hr>
+                <p class="info-p">አዲስ ተጠቃሚ ከሆኑ በነጻ ይመዝገቡ</p>
+                <a class="signup-btn" href="accounts/register/">መመዝገብያ</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="products">
+                <div class="results inline-display ">
+                    <h1>
+                        የፍለጋ ውጤቶች
+                    </h1>
+                    <h5>(ብዛት = {{object_list.count}})</h5>
+                </div>
+                {% for obj in object_list %}
+                <div class="product-items text-center">
+                    <a href="{% url 'product:product-detail' pk=obj.pk %}"><img class="pro-img text-center"
+                            src="{{obj.mainimage.url}}" alt="ተወዳጅ እቃዎች"
+                            href="{% url 'product:product-detail' pk=obj.pk %}"></a><br>
+                    <div class="product-info">
+                        <div class="pro-name text-left"><a class="pro-name"
+                                href="{% url 'product:product-detail' pk=obj.pk %}">{{obj.name}}</a></div><br>
+                        <p class="pro-price">{{obj.price}} ብር</p>
+                    </div>
+                </div>
+                {% empty %}
+                <h5>ባስገቡት መግለጫ የተመዘገበ እቃ የለም </h5>
+                {% endfor %}
+                <div class="">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+                        {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+                </>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

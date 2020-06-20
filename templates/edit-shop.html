@@ -1,0 +1,75 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ መግለጫ ለመቀየር</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'shops/edit-shop.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color  full-body">
+    <div class="row">
+        <div class="col-md-6 ">
+            <h2 class="register-h">መግለጫ</h2>
+            <div class="success-alert">
+                {{ message }}
+            </div>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-container">
+                    <p>የድርጅቱ አይነት፡</p>
+                    <select name="enterprise_type" class="input">
+                        <option class="container-bg">{{enterprise_type}}</option>
+                        <option>ፋብሪካ</option>
+                        <option>ማከፋፈያ</option>
+                        <option>ሱቅ</option>
+                    </select>
+                    <p>ስም፡</p>
+                    <input type="text" name="name" class="input" value="{{name}}">
+                    <p>መግለጫ፡</p>
+                    <textarea type="text" name="detail_text" class="input">{{detail_text}}</textarea>
+                    <p>አድራሻ፣ መለያ የአካባቢ ስም፣ ህንጻ፡</p>
+                    <input type="text" name="location1" class="input" value="{{location1}}">
+                    <p>ቀበሌ/ክፍለ ከተማ፡</p>
+                    <input type="text" name="location2" class="input" value="{{location2}}">
+                    <p>ከተማ፡</p>
+                    <select name="location3" class="input">
+                        <option class="container-bg">{{location3}}</option>
+                        <option>ባህር ዳር</option>
+                        {% for city in city %}
+                        <option>{{ city.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <p>ስልክ ቁጥር፡</p>
+                    <input type="text" name="phonenumber" class="input" value="{{phonenumber}}">
+                    <button type="submit" class="register-btn">ቀይር</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 ">
+            <div class="shop-card">
+                <div class="header-color"></div>
+                <h3 class="text-center">{{name}}</h3>
+                <hr>                
+                <p>መግለጫ፡ {{detail_text}}</p>
+                <hr>                
+                <p>የድርጅቱ አይነት፡ {{enterprise_type}}</p>
+                <hr>
+                <p>አድራሻ፣ መለያ የአካባቢ ስም፣ ህንጻ፡ {{location1}}</p>
+                <hr>
+                <p>ቀበሌ/ክፍለ ከተማ፡ {{location2}}</p>
+                <hr>
+                <p>ከተማ፡ {{location3}}</p>
+                <hr>
+                <p>ስልክ ቁጥር፡ {{phonenumber}}</p>
+                <hr>
+                <p>የግብር ከፋይነት መለያ ቁጥር፡ {{tin}}</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ ጥያቄ ለማቅረብ</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'comments/comments.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color  full-body">
+    <div class="row">
+        <div class="col-md-6 ">
+            <h2 class="register-h">አስተያየትዎን ይላኩ</h2>
+            <div class="success-alert">
+                {{ message }}
+            </div>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-container">
+                    <p>ስም፡</p><br>
+                    <h5>{{user.get_full_name}}</h5><br>
+                    <p>አስተያየት፡</p><br>
+                    <textarea type="text" name="detail_text" class="input">{{detail_text}}</textarea><br>
+                    <button type="submit" class="register-btn">ላክ</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 ">
+            <div class="shop-card">
+                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

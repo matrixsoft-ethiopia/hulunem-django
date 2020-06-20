@@ -1,0 +1,70 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የአስቤዛ አይነቶች</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'asebeza/category.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid full-body">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="main-container">
+                {% if user.is_authenticated  %}
+                {% if shop == 1 %}
+                <a href="{% url 'asebeza:add' %}">
+                   <div class="register-btn">አዲስ ለመመዝገብ</div>
+                   
+                </a>
+                {% else %}
+                <a href="{% url 'product:add_product_info' %}">
+                   <div class="register-btn">አዲስ ለመመዝገብ</div>
+                    
+                </a>
+                {% endif %}
+                {% else %}
+                <a href="{% url 'accounts:login' %}">
+                    <div class="register-btn">አዲስ ለመመዝገብ</div>
+                   
+                </a>
+                {% endif %}
+                <a href="{% url 'asebeza:asebeza-list' 1 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'asebeza/img/grain.jpg' %}" alt="">
+                        <h2>ጥራጥሬ</h2>
+                    </div>
+                </a>
+                <a href="{% url 'asebeza:asebeza-list' 2 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'asebeza/img/fruit.jpg' %}" alt="">
+                        <h2>ፍራፍሬ</h2>
+                    </div>
+                </a>
+                <a href="{% url 'asebeza:asebeza-list' 3 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'asebeza/img/vegitable.jpg' %}" alt="">
+                        <h2>አትክልት</h2>
+                    </div>
+                </a>
+                <a href="{% url 'asebeza:asebeza-list' 4 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'asebeza/img/packed.jpg' %}" alt="">
+                        <h2>የታሸገ</h2>
+                    </div>
+                </a>
+                <a href="{% url 'asebeza:asebeza-list' 5 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'asebeza/img/mitin.jpg' %}" alt="">
+                        <h2>ባልትና</h2>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

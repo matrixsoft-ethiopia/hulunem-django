@@ -1,0 +1,62 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ መግለጫ ለመቀየር</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'products/edit-product.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color  full-body">
+    <div class="row">
+        <div class="col-md-6 ">
+            <h2 class="register-h">መግለጫ</h2>
+            <div class="success-alert">
+                {{ message }}
+            </div>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="input-container">
+                    <p>ስም፡</p>
+                    <input type="text" name="name" class="input" value="{{name}}" required>
+                    <p>የእቃው አይነት፡</p>
+                    <select name="category" class="input">
+                        <option class="container-bg">{{category2}}</option>
+                        {% for category in category %}
+                        <option>{{ category.title }}</option>
+                        {% endfor %}
+                    </select>
+                    <p>መግለጫ፡</p>
+                    <textarea class="textarea" name="detail_text" id="" cols="30" rows="5"
+                        required>{{detail_text}}</textarea>
+                    <p>ዋጋ፡</p>
+                    <input type="text" name="price" class="input" value="{{price}}" required>
+                    <p>ዝቅተኛ የትእዛዝ መጠን፡</p>
+                    <input type="text" name="stock_qty" class="input" value="{{stock_qty}}" required>
+                    <p>ምስል፡</p>
+                    <input type="file" id="img" name="mainimage" accept="image/*" "><br>
+                    <button type=" submit" class="register-btn">ቀይር</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 ">
+            <div class="shop-card">
+                <h3 class="text-center header-color">{{name}}</h3>
+                <img src="{{mainimage.url}}" alt="ተወዳጅ እቃዎች" class="pro-img"><br>
+                <hr>
+                <div class="pro-detail-cont">
+                    <pre class="pro-detail">{{detail_text}}</pre><br>
+                </div>
+                <hr>
+                <p>{{price}} ብር</p>
+                <hr>
+                <p>ዝቅተኛ የትእዛዝ መጠን፡ {{stock_qty}}</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

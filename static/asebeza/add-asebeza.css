@@ -1,0 +1,104 @@
+.full-body{
+    min-height: 80%;
+    }
+.container-bg{
+    background-color: white;
+}
+.container-h{
+    margin-top: 15px;
+    display: inline-flex;
+}
+.header{
+    font-size: 25px;
+    margin-left: 15px;
+}
+.input{
+    width: 90%;
+    margin: 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color:rgb(89, 180, 142);
+    padding-left: 5px;
+}
+.input2{
+    width: 90%;
+    margin: 5px;
+    height: 100px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color:rgb(89, 180, 142);
+    padding-left: 5px;
+}
+.input3{
+    width: 90%;
+    margin: 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color:rgb(89, 180, 142);
+    padding-left: 5px;
+}
+
+.register-btn{
+    cursor: pointer;
+    background-color: rgb(46, 114, 46);
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    padding: 5px;
+    width: 40%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.register-btn:hover{
+    background-color: rgb(33, 82, 33);
+  
+}
+
+.reg-info-p{
+    background-color: white;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color:rgb(158, 158, 158);
+    padding: 15px;
+    margin-top: 15px;
+    width: 100%;
+    height: 90%;
+}
+.success-alert{
+    background-color: rgb(151, 255, 151);
+    border-style: none;
+    border-radius: 5px;
+    color: green;
+    width: 90%;
+    padding-left: 15px;
+    margin: 5px;
+}
+.warning-alert{
+    background-color: rgb(255, 170, 167);
+    border-style: none;
+    border-radius: 5px;
+    color: red;
+    width: 90%;
+    padding-left: 15px;
+    margin: 5px;
+}
+
+.back-btn{
+    color: white;
+    background-color: orange;
+    width: 40%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 4px;
+}
+.back-btn:hover{
+    color: white;
+    background-color: rgb(194, 127, 2);
+}
+.back-link:hover{
+text-decoration: none;
+}

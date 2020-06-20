@@ -1,0 +1,113 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'homepage/home-style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid margin-null full-body">
+    <div class="row">
+        <img class="bk-img" src="{% static 'homepage/img/background1.jpg'%} " width=100%>
+    </div>
+    <div class="row ">
+        <div class="col-md-4">
+            <div class="category1">
+                <h1 class="category">እቃዎች</h1>
+                <a class='list3' href="{% url 'asebeza:category'%}">አስቤዛ</a>
+                <a class='list2' href="{% url 'product:product-list' 1 %}">ኤሌክትሮኒክስ</a>
+                <a class='list2' href="{% url 'product:product-list' 2 %}">የሴቶች አልባሳት </a>
+                <a class='list2' href="{% url 'product:product-list' 3 %}">መዋብያ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 4 %}">የወንዶች አልባሳት</a>
+                <a class='list2' href="{% url 'product:product-list' 5 %}">የልጆች</a>
+                <a class='list2' href="{% url 'product:product-list' 6 %}">የቤት እቃዎች </a>
+                <a class='list2' href="{% url 'product:product-list' 7 %}">ፈርኒቸሮች</a>
+                <a class='list2' href="{% url 'product:product-list' 8 %}">የግምባታ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 9 %}">ማሽነሪዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 10 %}">የእጅ ስራዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 11 %}">መጽሐፎች</a>                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class='container1'>
+                <div class='overlay1'>
+                    <div class='text1'>ተወዳጅ እቃዎች</div>
+                </div>
+                <div class='slide'>
+                    <img class='animate-fadding' src="{% static 'homepage/img/slide1.jpg' %} " alt="ተወዳጅ እቃዎች"
+                        width=100%>
+                </div>
+                <div class='slide'>
+                    <img class='animate-fadding' src="{% static 'homepage/img/slide2.jpg' %} " alt="ተወዳጅ እቃዎች"
+                        width=100%>
+                </div>
+                <div class='slide'>
+                    <img class='animate-fadding' src="{% static 'homepage/img/slide3.jpg' %} " alt="ተወዳጅ እቃዎች"
+                        width=100%>
+                </div>
+                <div class='slide'>
+                    <img class='animate-fadding' src="{% static 'homepage/img/slide4.jpg' %} " alt="ተወዳጅ እቃዎች"
+                        width=100%>
+                </div>
+                <div class='slide'>
+                    <img class='animate-fadding' src="{% static 'homepage/img/slide5.jpg' %} " alt="ተወዳጅ እቃዎች"
+                        width=100%>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class='container2'>
+                <div class='overlay2'>
+                    <div class='text2'>አዳዲስ እቃዎች</div>
+                </div>
+                <div class='slide2'>
+                    <img src="{% static 'homepage/img/slide6.jpg' %}" alt="ተወዳጅ እቃዎች " width=100%>
+                </div>
+                <div class='slide2'>
+                    <img src="{% static 'homepage/img/slide7.jpg' %}" alt="ተወዳጅ እቃዎች" width=100%>
+                </div>
+                <div class='slide2'>
+                    <img src="{% static 'homepage/img/slide8.jpg' %}" alt="ተወዳጅ እቃዎች" width=100%>
+                </div>
+                <div class='slide2'>
+                    <img src="{% static 'homepage/img/slide9.jpg' %}" alt="ተወዳጅ እቃዎች" width=100%>
+                </div>
+                <div class='slide2'>
+                    <img src="{% static 'homepage/img/slide10.jpg' %}" alt="ተወዳጅ እቃዎች" width=100%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="jumbotron  text-center custom-jumbotron">
+                <h1>ለመግዛት ይመዝገቡ</h1>
+                <p>ማንኛውም አይነት እቃዎች በአካባቢዎ ከሚገኙ ሻጮች ያገኛሉ፣ በነፃ ይመዝገቡ።</p>
+                {% if user.is_authenticated %}
+                <a class='reg1' href="/profile/user-page/">{{ user.get_full_name}}</a>
+                {% else %}
+                <a class='reg1' href="/profile/register/">ይመዝገቡ</a>
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="jumbotron  text-center custom-jumbotron">
+                <h1>ለመሸጥ ይመዝገቡ</h1>
+                <p>እቃዎችን በአለም ላይ ለሚገኙ ገዥዎች ያቀርባሉ፣ በነፃ ይመዝገቡ።</p>
+                {% if user.is_authenticated %}
+                <a class='reg1' href="/shops/add/">ይመዝገቡ</a>
+                {% else %}
+                <a class='reg1' href="/profile/register/">ይመዝገቡ</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<script src=" {% static 'homepage/homescript.js' %}"></script>
+{% endblock %}

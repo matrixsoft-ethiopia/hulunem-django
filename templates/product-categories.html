@@ -1,0 +1,88 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የእቃ አይነቶች</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'products/category.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid full-body">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="main-container">
+                <a href="{% url 'product:product-list' 1 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/electronics.webp' %}" alt="">
+                        <h2>ኤሌክትሮኒክስ</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 2 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/womens-fashion.jpg' %}" alt="">
+                        <h2>የሴቶች አልባሳት</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 3 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/cosmotics.jpg' %}" alt="">
+                        <h2>መዋብያ እቃዎች</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 4 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/mens-fashion.jpg' %}" alt="">
+                        <h2>የወንዶች አልባሳት</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 5 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/kids.jpg' %}" alt="">
+                        <h2>የልጆች</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 6 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/home-appliance.jpg' %}" alt="">
+                        <h2>የቤት እቃዎች</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 7 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/furnichers.jpg' %}" alt="">
+                        <h2>ፈርኒቸሮች</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 8 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/construction-materials.jpg' %}" alt="">
+                        <h2>የግምባታ እቃዎች</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 9 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/machineries.jpg' %}" alt="">
+                        <h2>ማሽነሪዎች</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 10 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/artworks.jpg' %}" alt="">
+                        <h2>የእጅ ስራዎች</h2>
+                    </div>
+                </a>
+                <a href="{% url 'product:product-list' 11 %}">
+                    <div class="category-container">
+                        <img class="category-img" src="{% static 'products/img/books.jpg' %}" alt="">
+                        <h2>መጽሐፎች</h2>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

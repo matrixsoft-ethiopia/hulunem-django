@@ -1,0 +1,118 @@
+.full-body{
+  min-height: 80%;
+  background-color: rgb(240, 240, 240);
+  }
+.null-margin{
+  margin: 0px;
+  padding: 0px;
+}
+.bk-img{
+  margin-bottom: 15px;
+}
+.category1, .container1, .container2{
+  background-color: white;
+    border-style: solid;
+    border-color: rgb(177, 177, 177);
+    border-width: 1px;
+    width: 90%;
+    border-radius: 5px;
+    height: 100%;
+    margin-bottom: 20px;
+}
+h1.category{
+    color:white;
+    font-size: 25px;
+    background-color: orange;
+    padding-left: 15px;
+}
+
+.list2{
+    display: block;
+    text-decoration: none;
+    list-style-type: none;
+    color: rgb(73, 73, 73);
+    font-size: 20px;
+    padding: 5px 0px 5px 30px;
+}
+li.list2:hover, a.list2:hover{
+    text-decoration: none;
+    background-color: rgb(207, 207, 207);
+    color: rgb(58, 58, 58);
+    
+}
+.list3{
+  display: block;
+  text-decoration:none;
+  list-style-type: none;
+  color: rgb(14, 109, 1);
+  font-size: 20px;
+  
+  padding: 5px 0px 5px 30px;
+}
+.list3:hover{
+  text-decoration: none;
+  background-color:rgb(14, 109, 1);
+  color: white;
+  
+}
+.overlay1 {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    background-color: rgb(41, 92, 28);
+    overflow: hidden;
+    width: 70%;
+    height: 20%;
+    transition: 0.5s ease;
+  }
+  
+  .container1:hover .overlay1 {
+    height: 25%;
+  }
+  
+  .text1 {
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: Power Geez Unicode;
+  }
+  .overlay2 {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    background-color: rgb(41, 92, 28);
+    overflow: hidden;
+    width: 70%;
+    height: 20%;
+    transition: 0.5s ease;
+  }
+  
+  .container2:hover .overlay2 {
+    height: 25%;
+  }
+  
+.text2 {
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: Power Geez Unicode;
+  }
+.custom-jumbotron {
+   margin: 25px;
+   height: 80%;
+   background-color: white;
+}

@@ -1,0 +1,23 @@
+.full-body{
+    min-height: 80%;
+}
+
+.category-container{
+display: inline-block;
+padding: 25px;
+margin: 25px;
+}
+.category-container:hover{
+    background-color: rgb(236, 236, 236);
+    border-style: none;
+    border-radius: 10%;
+    }
+.category-img{
+    width:150px; height: 150px;
+    border-radius: 50%;
+    border-style: none;
+    border-width: 1px;
+    margin: 15px;
+    border-color: gray;
+    box-shadow: 2px 3px 10px grey;
+}

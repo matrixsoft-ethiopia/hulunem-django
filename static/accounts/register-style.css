@@ -1,0 +1,92 @@
+.full { 
+    margin:0; 
+    padding:0; 
+    height:100%; 
+  }
+.full-body{
+    min-height: 80%;
+    }
+.container-bg{
+    background-color: rgb(240, 240, 240);
+}
+.cont{
+background-color: white;
+margin: auto;
+width: 50%;
+min-height: 100%;
+border-style: solid;
+border-color: rgb(189, 189, 189);
+border-width: 1px;
+margin-bottom: 0px;
+}
+.form-cont{
+    display: inline-block;
+    width: 40%;
+}
+.register-h{
+    margin-top: 100px;
+    color: rgb(39, 39, 39);
+}
+.input{
+    border-style: solid;
+    border-color: rgb(122, 255, 162);
+    border-radius: 5px;
+    font-size: 15px;
+    border-width: 1px;
+    width: 90%;
+    padding: 4px;
+    margin-bottom: 10px;
+    }
+    
+.button {
+        cursor: pointer;
+        padding: 3px 3px;
+        font-size: 20px;
+        width: 162px;
+        background-color: rgb(18, 87, 1);
+        color: white;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border-style: none;
+        }
+        .button:hover  {
+        background-color: rgb(23, 73, 19);
+        }
+        .fb-button {
+           font-size: 20px;
+            padding: 3px 20px 3px 20px;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            border-style: none;
+            text-align: center;
+            margin-bottom: 50px;
+            }
+            .fb-button:hover  {
+            background-color: rgb(18, 43, 156);
+            text-decoration: none;
+            color: white;
+            }
+
+@media (max-width: 576px) {
+    .input{
+        width: 80%;
+       }
+       
+       .button {
+       width: 40%;
+         }
+  }
+  
+  @media (min-width: 768px) {
+  
+  }
+  
+  @media (min-width: 992px) {
+ 
+  }
+  
+  @media (min-width: 1200px) {
+ 
+  }

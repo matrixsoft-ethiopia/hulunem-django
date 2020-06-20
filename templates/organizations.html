@@ -1,0 +1,37 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የንግድ ድርጅቶች</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'business/organizations.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid full-body">
+     <div class="col-md-6 ">
+            <a class="custom-link" href="{% url 'shop:shops-list' %}">
+                <div class="cat">
+                    <h1 class="cat-h">ሱቆች</h1>
+                </div>
+            </a>
+            <a class="custom-link" href="{% url 'cart:cart_summary' %}">
+                <div class="cat">
+                    <h1 class="cat-h">ማከፋፈያዎች</h1>
+                </div>
+            </a>
+            <a class="custom-link" href="{% url 'cart:cart_summary' %}">
+                <div class="cat">
+                    <h1 class="cat-h">ፋብሪካዎች</h1>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 ">
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

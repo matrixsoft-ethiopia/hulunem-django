@@ -1,0 +1,55 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የእቃ ምዝገባ</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'products/add-products.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color container-bg full-body">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container-h">
+                <img src="{% static 'products/img/icon.png' %}" alt="shop" height="40px" width="40px">
+                <h1 class="header">የእቃ መመዝገብያ</h1>
+            </div>
+            <form method="POST" class="form" enctype="multipart/form-data">{% csrf_token %}
+                {% if product_qty >= 50 %}
+                <div class="warning-alert" >
+                    {{ message }}
+                </div>
+                {% else %}
+                <div class="success-alert">
+                    {{ message }}
+                </div>
+                {% endif %}
+                {{ form.name }}
+                <select name="category" class="input" placeholder=" የሱቅ ስም">
+                    {% for category in category %}
+                    <option>{{ category.title }}</option>
+                    {% endfor %}
+                </select>
+                {{ form.detail_text }}
+                {{ form.price }}
+                {{ form.stock_qty }}
+                {{ form.mainimage }}
+                <button type="submit" class="register-btn" onclick="document.getElementById('alert').style.display='block'">መዝግብ</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <p class="reg-info-p">
+                - በነጻ 50 እቃዎችን መደርደር ይችላሉ። ተጨማሪ እቃዎችን ለመደርደር የአባልነት ምዝገባ መመዝገብ ይኖርቦታል <br>
+                - የእቃውን ሙሉ መግልጫ በመሙላት በሱቁ ውስጥ መመዝገብ ይችላሉ <br>
+                - የእቃው ስም አጭርና ገላጭ እንዲሁም በአማርኛና እንግሊዝኛ ቢሆን ተጠቃሚዎች በቀላሉ እንዲያገኙት ይረዳል <br>
+                - የሚያያይዙት ፎቶ ጥራት ያልው 300px በ 400px እና በነጭ መደብ ላይ የተነሳ ቢሆን ይመረጣል። ምስሎችን ከ ጉግል ላይ በቀላሉ ማውረድና ማያያዝ
+                ይችላሉ <br>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

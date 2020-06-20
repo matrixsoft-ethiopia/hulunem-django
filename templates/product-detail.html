@@ -1,0 +1,190 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የእቃ ዝርዝር</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'products/products-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="category1">
+                <a class='list2' href="{% url 'product:product-list' 1 %}">ኤሌክትሮኒክስ</a>
+                <a class='list2' href="{% url 'product:product-list' 2 %}">የሴቶች አልባሳት </a>
+                <a class='list2' href="{% url 'product:product-list' 3 %}">መዋብያ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 4 %}">የወንዶች አልባሳት</a>
+                <a class='list2' href="{% url 'product:product-list' 5 %}">የልጆች</a>
+                <a class='list2' href="{% url 'product:product-list' 6 %}">የቤት እቃዎች </a>
+                <a class='list2' href="{% url 'product:product-list' 7 %}">ፈርኒቸሮች</a>
+                <a class='list2' href="{% url 'product:product-list' 8 %}">የግምባታ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 9 %}">ማሽነሪዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 10 %}">የእጅ ስራዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 11 %}">መጽሐፎች</a>
+                <a class='list2' href="{% url 'product:product-list' 10 %}">የእጅ ስራዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 11 %}">መጽሐፎች</a>
+            </div>
+            <div class="logincontainer">
+                {% if user.is_authenticated %}
+                <h1 class="reg-pro-h">እቃዎችን ለመመዝገብ</h1>
+                <a class="reg-pro-a" href="/products/add/">አዲስ እቃ መዝግብ</a>
+                {% else %}
+                <h1 class="signin-h">መግብያ</h1>
+                <input class="email-input" type="text" placeholder="ኢሜይል">
+                <input class="password-input" type="text" placeholder="የይለፍ ቃል">
+                <input class="checkbox-input" type="checkbox">
+                <p class="stay-p">እንደገቡ ለመቆየት</p>
+                <button class="login-btn">ግባ</button>
+                <p class="info-p">አዲስ ተጠቃሚ ከሆኑ በነጻ ይመዝገቡ</p>
+                <a class="signup-btn" href="accounts/register/">መመዝገብያ</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="products">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h1 class="results">
+                                {{productdetail.name}}
+                            </h1>
+                            <img src="{{object.mainimage.url}}" alt="ተወዳጅ እቃዎች" class="pro-img"><br>
+                            <pre class="pro-detail">{{productdetail.detail_text}}</pre><br>
+                            <p class="pro-price">{{productdetail.price}} ብር</p>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="shop-description">
+                                <h1 class="shop-name" name='shopname'>
+                                    {{shops.name}}
+                                </h1>
+                                <p class="shop-detail"><img src="{% static 'products/img/locaion-icon.png' %}"
+                                        width="25px" height="25px">
+                                    {{shops.location1}}, {{shops.location2}}, {{shops.location3}}</p><br>
+                                <p class="shop-detail"><img src="{% static 'products/img/phone-icon.png' %}"
+                                        width="25px" height="25px">
+                                    {{shops.phone_number}}</p>
+                                <div class="cart-btn-container">
+                                    {% if user.is_authenticated %}
+                                    {% if owner == current_user %}
+                                    <a class="edit" href="{% url 'product:edit-product' productdetail.id %}">ለመቀየር</a>
+                                    {% else %}
+                                    {% if current_order_items != 0 %}
+                                    <h5 class="user-rating">√ የታዘዘ </h5>
+                                    <hr>
+                                    <h5 class="bg-color padding-left"> በእርስዎ የተሰጠ ደረጃ </h5>
+                                    {% if rate != 0 %}
+                                    {% if rate == 5 %}
+                                    <p class="user-rating">በጣም ከፍተኛ</p>
+                                    {% elif rate == 4 %}
+                                    <p class="user-rating">ከፍተኛ</p>
+                                    {% elif rate == 3 %}
+                                    <p class="user-rating">መካከለኛ</p>
+                                    {% elif rate == 2 %}
+                                    <p class="user-rating">ዝቅተኛ</p>
+                                    {% elif rate == 1 %}
+                                    <p class="user-rating">በጣም ዝቅተኛ</p>
+                                    {% endif %}
+                                    {% else %}
+                                    <div class="dropdown">
+                                        <button class="dropbtn">ድምጽ ይስጡ</button>
+                                        <div class="dropdown-content">
+                                            <a href="{% url 'product:rate5' productdetail.id%}">በጣም ከፍተኛ</a>
+                                            <a href="{% url 'product:rate4' productdetail.id%}">ከፍተኛ</a>
+                                            <a href="{% url 'product:rate3' productdetail.id%}">መካከለኛ</a>
+                                            <a href="{% url 'product:rate2' productdetail.id%}">ዝቅተኛ</a>
+                                            <a href="{% url 'product:rate1' productdetail.id%}">በጣም ዝቅተኛ</a>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    {% elif current_cart_items != 0 %}
+                                    <a class="goto-cart-btn" href="{% url 'cart:cart_summary' %}">ዘምቢሉን ለመክፈት</a>
+                                    {% else %}
+                                    <a class="cart-btn" href="{% url 'cart:add_to_cart' productdetail.id %}">ወደ ዘምቢል
+                                        ለመጨመር</a>
+                                    {% endif %}
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="rating">
+                                <h5 class="bg-color"> በተጠቃሚዎች የተሰጠ ደረጃ </h5>
+                                {% if productdetail.avg_rating >= 1 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star unchecked"></span>
+                                {% endif %}
+                                {% if productdetail.avg_rating >= 2 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star unchecked"></span>
+                                {% endif %}
+                                {% if productdetail.avg_rating >= 3 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star unchecked"></span>
+                                {% endif %}
+                                {% if productdetail.avg_rating >= 4 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star unchecked"></span>
+                                {% endif %}
+                                {% if productdetail.avg_rating >= 4.8 %}
+                                <span class="fa fa-star checked"></span>
+                                {% else %}
+                                <span class="fa fa-star unchecked"></span>
+                                {% endif %}
+                                <br>
+                                <p class="voter-p">የመረጡ ተጠቃሚዎች ቁጥር ({{productdetail.no_of_ratings}})</p>
+                                <div class="bar-rating-container">
+                                    <div class="legend-container">
+                                        <p class="legend-p">በጣም ከፍተኛ</p>
+                                        <p class="legend-p">ከፍተኛ</p>
+                                        <p class="legend-p">መካከለኛ</p>
+                                        <p class="legend-p">ዝቅተኛ</p>
+                                        <p class="legend-p">በጣም ዝቅተኛ</p>
+                                    </div>
+                                    <div class="bar-container">
+                                        <svg class="rec-container">
+                                            <rect class="bar1" height="20px" width="{{ productdetail.five_star }}%">
+                                            </rect>
+                                        </svg>
+                                        <svg class="rec-container">
+                                            <rect class="bar1" height="20px" width="{{ productdetail.four_star }}%">
+                                            </rect>
+                                        </svg>
+                                        <svg class="rec-container">
+                                            <rect class="bar1" height="20px" width="{{ productdetail.three_star }}%">
+                                            </rect>
+                                        </svg>
+                                        <svg class="rec-container">
+                                            <rect class="bar1" height="20px" width="{{ productdetail.two_star }}%">
+                                            </rect>
+                                        </svg>
+                                        <svg class="rec-container">
+                                            <rect class="bar1" height="20px" width="{{ productdetail.one_star }}%">
+                                            </rect>
+                                        </svg>
+                                    </div>
+                                    <div class="no-of-rating">
+                                        <p class="legend-p">{{ productdetail.five_star }}%</p>
+                                        <p class="legend-p">{{ productdetail.four_star }}%</p>
+                                        <p class="legend-p">{{ productdetail.three_star }}%</p>
+                                        <p class="legend-p">{{ productdetail.two_star }}%</p>
+                                        <p class="legend-p">{{ productdetail.one_star }}%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

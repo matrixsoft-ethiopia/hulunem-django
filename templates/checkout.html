@@ -1,0 +1,117 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የእቃ ዝርዝር</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'cart/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="category">
+                <a class='list2' href="{% url 'product:product-list' 1 %}">ኤሌክትሮኒክስ</a>
+                <a class='list2' href="{% url 'product:product-list' 2 %}">የሴቶች አልባሳት </a>
+                <a class='list2' href="{% url 'product:product-list' 3 %}">መዋብያ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 4 %}">የወንዶች አልባሳት</a>
+                <a class='list2' href="{% url 'product:product-list' 5 %}">የልጆች</a>
+                <a class='list2' href="{% url 'product:product-list' 6 %}">የቤት እቃዎች </a>
+                <a class='list2' href="{% url 'product:product-list' 7 %}">ፈርኒቸሮች</a>
+                <a class='list2' href="{% url 'product:product-list' 8 %}">የግምባታ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 9 %}">ማሽነሪዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 10 %}">የእጅ ስራዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 11 %}">መጽሐፎች</a>
+            </div>
+            <div class="logincontainer">
+                {% if user.is_authenticated %}
+                <h1 class="reg-pro-h">እቃዎችን ለመመዝገብ</h1>
+                <a class="reg-pro-a" href="/products/add/">አዲስ እቃ መዝግብ</a>
+                {% else %}
+                <h1 class="signin-h">መግብያ</h1>
+                <input class="email-input" type="text" placeholder="ኢሜይል">
+                <input class="password-input" type="text" placeholder="የይለፍ ቃል">
+                <input class="checkbox-input" type="checkbox">
+                <p class="stay-p">እንደገቡ ለመቆየት</p>
+                <button class="login-btn">ግባ</button>
+                <p class="info-p">አዲስ ተጠቃሚ ከሆኑ በነጻ ይመዝገቡ</p>
+                <a class="signup-btn" href="accounts/register/">መመዝገብያ</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="products">
+                <h2 class="results-h" name='shopname'>
+                    ትእዛዝ ለመስጠት የተዘጋጁ እቃዎች ዝርዝር
+                </h2>
+                <div class="success-alert">
+                    {{ message }}
+                </div>
+                <div class="product-items">
+                    <p class="pro-img-h">ፎቶ </p>
+                    <p class="pro-name-h">የእቃው አይነት</p>
+                    <p class="pro-price-h">ዋጋ</p>
+                    <p class="pro-shop-h">ሱቅ</p>
+                </div>
+                <hr>
+                {% for item in cart_items %}
+                <div class="product-items">
+                    <img class="pro-img" src="{{item.product.mainimage.url}}" alt="pic">
+                    <p class="pro-name">{{item.product.name}}</p>
+                    <p class="pro-price">{{item.product.price}} ብር</p>
+                    <p class="pro-shop">{{item.product.shop}}</p>
+                </div>
+                <hr>
+                {% empty %}
+                <h3 class="padding">ወደ ዘምቢል የተከተተ እቃ የለም</h3>
+                {% endfor %}
+                {% if cart_total != 0 %}
+                <p class="total-price"> ድምር፡ {{ cart_total }} ብር</p>
+                <form class="form padding" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-container">
+                                    <p class="padding-left" >ማድረሻ ቦታ</p>
+                                    {{ form.location1 }}
+                                    {{ form.location2 }}
+                                    <select name="location3" class="input">
+                                        <option>ባህር ዳር</option>
+                                        {% for city in city %}
+                                        <option>{{ city.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <hr>
+                                    <p class="padding-left">መገናኛ ስልክ ቁጥር</p> 
+                                    {{ form.phone_number }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">                                
+                                <p class="info-alert">የተዘረዘሩ እቃዎችን የእዘዝ ምልክቱን በመጫን እቃዎቹ ለሚገኙበት ሱቆች ማስተላለፍ ይቻላል። የስልክ
+                                    ቁጥርዎ
+                                    ለሱቆች
+                                    የሚላክ ሲሆን
+                                    አንድ የሱቅ ባለቤት
+                                    መልክቱ
+                                    እንደደርሰው በስልክ ቁጥርዎ የሚደውልና ቀጣይ የክፍያና ሌሎች አገልግሎቶችን የሚያስረዳ ይሆናል። </p>
+                                <p class="warning-alert">ማሳሰብያ፡ አዴተራ ከሱቆች ጋር በሚኖሩ የክፍያ ሂደቶች እና ሌሎች አገለግሎቶች ውስጥ እንደማይሳተፍና
+                                    ሃላፊነቱን
+                                    እንደማይወስድ
+                                    እናሳስባለን። ክፍያዎችን በቦታው በመገኘት ቢፈጽሙ ይመረጣል።
+                                </p>
+                                <button type="submit" class="order-btn">እዘዝ</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}

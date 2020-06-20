@@ -1,0 +1,320 @@
+.category1{
+      width: 95%;
+      background-color: white;
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgb(173, 173, 173);
+      border-radius: 5px;
+      margin: 15px;  
+     }
+     .list2{
+      display: block;
+      text-decoration: none;
+      color: rgb(112, 112, 112);
+      padding: 0px;
+      padding: 5px 0px 2px 25px;
+     }
+  .list2:hover{
+      text-decoration: none;
+      background-color: rgb(192, 192, 192);
+      color: black;
+     }
+  .logincontainer{
+      background-color: white;
+      width: 95%;
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgb(173, 173, 173);
+      border-radius: 5px;  
+     margin: 15px;
+     min-height: 80px;
+     text-align: center;
+     }
+     .reg-pro-h{
+      border-style: none;
+      font-size: 20px;
+      color: white;
+      background-color: orange;
+      margin-bottom: 15px;
+    }
+  .reg-pro-a{
+      text-align: center;
+      font-size: 15px;
+      padding: 5px;
+      background-color: rgb(70, 161, 48);
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      box-shadow: 0px 3px 10px rgb(202, 202, 202);
+      }
+  .reg-pro-a:hover{   
+      background-color: #18414b;  
+      text-decoration: none;
+      color: white;
+      
+      }
+ .signin-h{
+      border-style: none;
+      font-size: 20px;
+     padding: 3px 3px;
+      width: 80%;
+      color: dimgray;
+      text-align: center;
+      }
+  .email-input{
+      border-style: solid;
+      border-color: grey;
+      border-radius: 5px;
+      font-size: 15px;
+      border-width: 1px;
+      padding: 3px 3px;
+      width: 90%;
+      margin-bottom: 10px;
+    }
+  .password-input{
+      border-style: solid;
+      border-color: grey;
+      border-radius: 5px;
+      font-size: 15px;
+      border-width: 1px;
+      padding: 3px 3px;
+      width: 90%;
+      margin-bottom: 10px;
+    }
+  .login-btn
+    {
+      cursor: pointer;
+      border-style: none;
+      font-size: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      width: 100%px;
+      background-color: rgb(70, 161, 48);
+      color: white;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+  .login-btn:hover  {
+     background-color: rgb(23, 73, 19);
+     color: white;
+    }
+  .info-p{
+      font-size: 15px;
+       color: dimgray;
+       margin-bottom: 10px;
+    }
+  .signup-btn{
+    margin-bottom: 15px;
+  }
+  .products{
+     width: 95%;
+     background-color: white;
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgb(173, 173, 173);
+      border-radius: 5px;
+      margin-top: 15px;
+      min-height: 700px;
+      
+     }
+  .results{
+      background-color: orange;
+      color: white;
+      width: 100%;
+      min-width: 300px;
+      font-size: 20px;
+      padding: 5px;
+      }
+
+  .pro-img {
+     max-width: 300px;
+      max-height:300px;
+      margin: 5px;
+  }
+    
+  .pro-detail {
+    white-space: pre-wrap;
+   
+     }
+  
+     .pro-price {
+      color: black;
+      font-style: normal;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: normal;
+      text-decoration: none;
+      margin: 0px;
+      height: 20px;
+      align-items: center;
+      font-weight: bold;
+     }
+     
+     .step-links{
+      text-decoration: none;
+      font-weight: bold;
+      color: rgb(0, 113, 128);
+      font-family: Arial, Helvetica, sans-serif;
+      margin-left: 15px;
+     }
+
+.shop-description {
+      display: inline-block;
+      background-color: white;
+      min-width: 220px;
+      width: 100%;
+      padding: 15px;
+      height: auto;
+}
+.cart-btn-container{
+  margin-top: 50px;
+ }   
+.cart-btn{
+  text-decoration: none;
+  color: white;
+  width: 50%;
+  background-color: rgb(70, 161, 48);
+  border-radius: 5px;
+  padding: 7px;
+  margin-top: 500px;
+ }   
+ .cart-btn:hover{
+  background-color: rgb(34, 82, 22);
+  text-decoration: none;
+  color: white;
+  
+ }
+ .goto-cart-btn{
+  text-decoration: none;
+  color: black;
+  background-color: rgb(198, 229, 190);
+  border-radius: 5px;
+  padding: 7px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color:green;
+ }   
+.already-ordered{
+font-size: 20px;
+color: rgb(30, 160, 4);
+width: 100%;
+padding: 7px;
+padding-left: 0px;
+padding-right: 50px;
+} 
+.shop-name{
+  width: 100%;
+  font-size: 25px;
+}
+
+.shop-detail{
+  width: 100%;
+  font-size: 15px;
+}
+.rating{
+  width: 100%;
+  padding: 15px;
+}
+.checked{
+  color:orange;
+}
+.unchecked{
+  color:rgb(194, 194, 194);
+}
+.voter-p{
+  color: blue;
+  font-size: 14px;
+}
+.bar-rating-container{
+  display: inline-flex;
+  margin-top: 30px;
+ }
+.legend-container{
+ display: inline-block;
+ width: 25%;
+}
+.legend-p{
+  font-size: 14px;
+}
+.bar-container{
+  width: 65%;
+  height: 175px;
+  padding: 5px;
+}
+.rec-container{
+  margin-bottom: 10px;
+  height: 20px;
+  width: 100%;
+}
+.bar1{
+  height: 20px;
+  fill: rgb(144, 255, 144);
+  border-style: solid;
+  stroke-width: 1px;
+  stroke: green;
+}
+.no-of-rating{
+  margin-left: 10px;
+  display: inline-block;
+  width: 10%;
+}
+.user-rating{
+  font-size: 18px;
+  color: rgb(12, 92, 12);
+  font-weight: bold;
+}
+.dropdown{
+  position: relative;
+  display: inline-block;
+
+}
+.dropdown-content{
+display: none;
+width: 110px;
+position: absolute;
+box-shadow: 0px 2px 10px rgb(212, 212, 212);
+background-color: rgb(247, 247, 247);
+z-index: 1;
+}
+.dropdown-content a{
+  display: block;
+  padding: 3px 15px 3px 15px;
+  text-decoration: none;
+}
+.dropdown-content a:hover{
+  background-color: rgb(233, 233, 233);
+}
+.dropdown:hover .dropdown-content{
+  display: block;
+}
+.dropdown:hover .dropbtn{
+  background-color: rgb(255, 255, 255);
+  color: rgb(5, 82, 5);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(5, 82, 5) ;
+}
+
+.dropbtn{
+  background-color: rgb(64, 138, 64);
+  border-style: none;
+  color: white;
+}
+
+.edit
+   {
+     text-decoration: none;
+     color: white;
+     background-color: rgb(56, 129, 56);
+     border-radius: 3px;
+     padding: 2px 15px  3px 15px ;
+     border-style: solid;
+     border-width: 1px;
+     border-color: rgb(56, 129, 56);
+   }
+   .edit:hover {
+     background-color: rgb(35, 83, 35);
+     text-decoration: none;
+     color: white;
+   }

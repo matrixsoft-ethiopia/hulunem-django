@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    {% block title %} {% endblock %}
+    <link rel="icon" href="{% static 'accounts/img/icon.jpg' %}" type="image/gif" sizes="16x16">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'base-layout/base-layout.css' %}">
+    {% block style %}{% endblock %}
+</head>
+
+<body>
+    <div class="container-fluid null-margin">
+        <!-- Top bar -->
+        <div class="row ">
+            <div class="col-md-12 custom-topbar justify">
+                <a href="/"><img src="{% static 'base-layout/img/logo.png' %}" alt="adettera.com" class="logo "></a>
+                <div class="user-profile">
+                    {% if user.is_authenticated %}
+                    <a class='logged-user' href="/profile/user-page/">{{ user.first_name}}</a>
+                    <a class='userorder' href="{% url 'cart:order-given' %}">ትእዛዝ</a>
+                    <a href="{% url 'cart:cart_summary' %}"><img class='cart-img'
+                            src="{% static 'base-layout/img/cart.png' %}" alt="cart"></a>
+                    {% else %}
+                    <a class='login' href="{% url 'accounts:login' %}">መግብያ</a>
+                    <a class='useror der' href="{% url 'accounts:login' %}">ትእዛዝ</a>
+                    <a href="/profile/login/"><img class='cart-img' src="{% static 'base-layout/img/cart.png' %}"
+                            alt="cart"></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid null-margin">
+        <div class="row ">
+            <div class="col-md-12">
+                <!-- Navigation -->
+                <nav class="navbar navbar-expand-md custom-navbar nav-pd  text-left ">
+                    <!-- Toggler/collapsibe Button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#collapsibleNavbar">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                    <!-- Navbar links -->
+                    <div class="collapse navbar-collapse  nav-pd txt-color-white" id="collapsibleNavbar">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item ">
+                                <a class="nav-link white-text " href="/">ዋና ገጽ</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link white-text" href="/products/categories/">እቃዎች</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link white-text" href="/business/organizations/">የንግድ ድርጅቶች</a>
+                            </li>
+                            <li class="nav-item ">
+                                {% if not user.is_authenticated %}
+                                <a class="nav-link white-text" href="/profile/register/">ለመመዝገብ</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- search -->
+                    <form class="form-inline search-container " action="{% url 'product:search-results' %}"
+                        method="get">
+                        <img class="search-icon" src="{% static 'homepage/img/search-icon.png' %}">
+                        <input class='search-input' placeholder="የሚፈልጉትን እቃ ስም ያስገቡ" type="text" name="search-input" />
+                        <button class="search-btn" type="submit">ፈልግ</button>
+                    </form>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</body>
+<!-- content -->
+{% block content %}
+{% endblock %}
+<!-- Footer -->
+<footer class="page-footer font-small indigo custom-footer footer-bottom">
+    <!-- Footer Elements -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a>
+                    <img class="social-img" src="{% static 'base-layout/img/facebook.png' %}" width="50">
+                </a>
+                <a>
+                    <img class="social-img" src="{% static 'base-layout/img/twitter.png' %}" width="50">
+                </a>
+                <!-- instagram-->
+                <a>
+                    <img class="social-img" src="{% static 'base-layout/img/instagram.png' %}" width="50">
+                </a>
+            </div>
+        </div>
+        <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-3 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold mt-3 mb-4">የደንበኞች አገልግሎት</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        {% if user.is_authenticated %}
+                        <a class="white-text" href="/user/questions/">ጥያቄ ካለዎት</a>
+                        {% else %}
+                        <a class="white-text" href="{% url 'accounts:login' %}">ጥያቄ ካለዎት</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if user.is_authenticated %}
+                        <a class="white-text" href="/user/comments/">አስተያየት ለመስጠት</a>
+                        {% else %}
+                        <a class="white-text" href="{% url 'accounts:login' %}">አስተያየት ለመስጠት</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if user.is_authenticated %}
+                        <a class="white-text" href="/user/claims/">ቅሬታ ለማቅረብ</a>
+                        {% else %}
+                        <a class="white-text" href="{% url 'accounts:login' %}">ቅሬታ ለማቅረብ</a>
+                        {% endif %}
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-3 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">ከኛ ጋር ለመስራት</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="white-text" href="/business/advertisement/">ማስተዋወቅያ ለመልቀቅ</a>
+                    </li>
+                    <li>
+                        {% if user.is_authenticated %}
+                        <a class="white-text" href="/business/sell_products/">እቃዎችን ለመሸጥ</a>
+                        {% else %}
+                        <a class="white-text" href="{% url 'accounts:login' %}">እቃዎችን ለመሸጥ</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        <a class="white-text" href="/business/membership_registration/">የአባልነት ምዝገባ</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-3 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">ለንግድ ድርጅቶች</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="white-text" href="{% url 'business:factory' %}">ፋብሪካዎች</a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="{% url 'business:distributer' %}">አከፋፋዮች</a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="{% url 'business:shop' %}">ሱቆች</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-3 mx-auto">
+
+                <!-- Links -->
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">ስለ አዴተራ</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="white-text" href="{% url 'homepage:adetera' %}">መግለጫ</a>
+                    </li>
+                    <li>
+                        <a class="white-text" href="{% url 'homepage:matrix' %}">MatrixSoft Ethiopia</a>
+                    </li>
+
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 custom-footer2">© 2020 Copyright:
+        <a class="white-text" href="https://mdbootstrap.com/"> MatrixSoft Ethiopia</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->

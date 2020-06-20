@@ -1,0 +1,29 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ መግለጫ ለመቀየር</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'accounts/edit-user.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color container-bg full-body">
+    <div class="row">
+        <div class="col-md-12 text-center justify-content-center">
+            <h2 class="register-h">መግለጫ</h2>
+            <div class="success-alert text-center">
+                {{ message }}
+            </div>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <input type="text" name="firstname" class="input" value="{{firstname}}"> <br>
+                <input type="text" name="lastname" class="input" value="{{lastname}}"><br>
+                <button type="submit" class="register-btn">ቀይር</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

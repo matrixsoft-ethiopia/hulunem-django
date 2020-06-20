@@ -1,0 +1,95 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የእቃ ዝርዝር</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'asebeza/asebeza-list.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container-fluid bg-color full-body">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            {% if user.is_authenticated  %}
+            {% if shop == 1 %}
+            <a class="link" href="{% url 'asebeza:add' %}">
+                <div class="register-btn2">አዲስ ለመመዝገብ</div>
+            </a>
+            {% else %}
+            <a class="link" href="{% url 'product:add_product_info' %}">
+                <div class="register-btn2">አዲስ ለመመዝገብ</div>
+            </a>
+            {% endif %}
+            {% else %}
+            <a class="link" href="{% url 'accounts:login' %}">
+                <div class="register-btn2">አዲስ ለመመዝገብ</div>
+            </a>
+            {% endif %}
+            <a class="link" href="{% url 'asebeza:asebeza-list' 1 %}">
+                <div class="register-btn">ጥራጥሬ</div>
+            </a>
+            <a class="link" href="{% url 'asebeza:asebeza-list' 2 %}">
+                <div class="register-btn">ፍራፍሬ</div>
+            </a>
+            <a class="link" href="{% url 'asebeza:asebeza-list' 3 %}">
+                <div class="register-btn">አትክልት</div>
+            </a>
+            <a class="link" href="{% url 'asebeza:asebeza-list' 4 %}">
+                <div class="register-btn">የታሸገ</div>
+            </a>
+            <a class="link" href="{% url 'asebeza:asebeza-list' 5 %}">
+                <div class="register-btn">ባልትና</div>
+            </a>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="results inline-display ">
+                <h1>
+                    {{ category }}
+                </h1>
+                <h5>(ብዛት = {{object_list.count}})</h5>
+            </div>
+            {% for obj in object_list %}
+            <div class="product-items text-center">
+                {% if obj.mainimage %}
+                <a href="{% url 'product:product-detail' pk=obj.pk %}"><img class="pro-img text-center"
+                        src="{{obj.mainimage.url}}" alt="ተወዳጅ እቃዎች"></a><br>
+                {% else %}
+                <a href="{% url 'product:product-detail' pk=obj.pk %}"><img class="pro-img text-center"
+                        src="{% static 'asebeza/img/default.jpg' %}" alt="ተወዳጅ እቃዎች"></a><br>
+                {% endif %}
+                <div class="product-info ">
+                    <div class="pro-name text-left">
+                        <a class="pro-name" href="{% url 'product:product-detail' pk=obj.pk %}">{{obj.name}}</a>
+                    </div>
+                    <br>
+                    <p class="pro-price">{{obj.price}} ብር</p>
+                </div>
+            </div>
+            {% empty %}
+            <h3> በስሩ የተመዘገበ እቃ የለም</h3>
+            {% endfor %}
+            <div class="">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

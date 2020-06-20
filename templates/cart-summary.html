@@ -1,0 +1,84 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የእቃ ዝርዝር</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'cart/cart-summary.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="category">
+                <a class='list2' href="{% url 'product:product-list' 1 %}">ኤሌክትሮኒክስ</a>
+                <a class='list2' href="{% url 'product:product-list' 2 %}">የሴቶች አልባሳት </a>
+                <a class='list2' href="{% url 'product:product-list' 3 %}">መዋብያ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 4 %}">የወንዶች አልባሳት</a>
+                <a class='list2' href="{% url 'product:product-list' 5 %}">የልጆች</a>
+                <a class='list2' href="{% url 'product:product-list' 6 %}">የቤት እቃዎች </a>
+                <a class='list2' href="{% url 'product:product-list' 7 %}">ፈርኒቸሮች</a>
+                <a class='list2' href="{% url 'product:product-list' 8 %}">የግምባታ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 9 %}">ማሽነሪዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 10 %}">የእጅ ስራዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 11 %}">መጽሐፎች</a>
+            </div>
+            <div class="logincontainer">
+                {% if user.is_authenticated %}
+                <h1 class="reg-pro-h">እቃዎችን ለመመዝገብ</h1>
+                <a class="reg-pro-a" href="/products/add/">አዲስ እቃ መዝግብ</a>
+                {% else %}
+                <h1 class="signin-h">መግብያ</h1>
+                <input class="email-input" type="text" placeholder="ኢሜይል">
+                <input class="password-input" type="text" placeholder="የይለፍ ቃል">
+                <input class="checkbox-input" type="checkbox">
+                <p class="stay-p">እንደገቡ ለመቆየት</p>
+                <button class="login-btn">ግባ</button>
+                <p class="info-p">አዲስ ተጠቃሚ ከሆኑ በነጻ ይመዝገቡ</p>
+                <a class="signup-btn" href="accounts/register/">መመዝገብያ</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="products">
+                <h1 class="results-h" name='shopname'>
+                    በዘንቢል ውስጥ የሚገኙ እቃዎች ዝርዝር
+                </h1>
+                <div class="product-items">
+                    <p class="pro-img-h">ፎቶ </p>
+                    <p class="pro-name-h">የእቃው አይነት</p>
+                    <p class="pro-price-h">ዋጋ</p>
+                </div>
+                <hr>
+                {% for item in cart_items %}
+                <div class="product-items">
+                    <img class="pro-img" src="{{item.product.mainimage.url}}" alt="pic" height=30px width=30px><br>
+                    <p class="pro-name">{{item.product.name}}</p>
+                    <p class="pro-price">{{item.product.price}}</p>
+                    <a class="delete-cart-btn" href="{% url 'cart:delete_item' item.id %}">
+                        <div>ለመሰረዝ</div>
+                    </a>
+                </div>
+                <hr>
+                {% empty %}
+                <h3 class="padding-left">ወደ ዘምቢል የተከተተ እቃ የለም</h3>
+                {% endfor %}
+                {% if cart_total != 0 %}
+                <p class="total-price"> ድምር፡ {{ cart_total }}</p>
+                {% endif %}
+                <div class="btn-container">
+                    <a  class="proceed-shoping-btn" href="/products/categories/"><div > ወደ ግብይት ለመመለስ </div></a>
+                    {% if cart_total != 0 %}
+                    <a class="proceed-checkout-btn" href="{% url 'cart:checkout' %}"><div>ወደ ትእዛዝ ለመቀጠል</div> </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}

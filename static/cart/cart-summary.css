@@ -1,0 +1,242 @@
+.bg-color{
+  background-color: rgb(235, 235, 235);
+  
+}
+.category{
+    width: 100%;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(173, 173, 173);
+    border-radius: 5px;
+    margin-top: 15px;  
+   }
+.list2{
+    display: block;
+    text-decoration: none;
+    color: rgb(112, 112, 112);
+    padding: 0px;
+    margin: 5px;
+    padding: 5px;
+    margin-left: 20px;
+   }
+.list2:hover{
+    text-decoration: none;
+    background-color: rgb(70, 161, 48);
+    color: white;
+   }
+.logincontainer{
+    background-color: white;
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(173, 173, 173);
+    border-radius: 5px;  
+   margin-top: 15px;
+   min-height: 80px;
+   text-align:center;
+   }
+.reg-pro-h{
+    border-style: none;
+    font-size: 20px;
+    color: rgb(80, 80, 80);
+  }
+.reg-pro-a{
+    text-align: center;
+    font-size: 15px;
+    padding: 5px;
+    background-color: #246272;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    
+    }
+.reg-pro-a:hover{   
+    background-color: #18414b;  
+    text-decoration: none;
+    color: white;
+    
+    }
+.signin-h{
+    border-style: none;
+    font-size: 20px;
+   padding: 3px 3px;
+    width: 80%;
+    color: dimgray;
+    text-align: center;
+    }
+.email-input{
+    border-style: solid;
+    border-color: grey;
+    border-radius: 5px;
+    font-size: 15px;
+    border-width: 1px;
+    padding: 3px 3px;
+    width: 90%;
+    margin-bottom: 10px;
+  }
+.password-input{
+    border-style: solid;
+    border-color: grey;
+    border-radius: 5px;
+    font-size: 15px;
+    border-width: 1px;
+    padding: 3px 3px;
+    width: 90%;
+    margin-bottom: 10px;
+  }
+.login-btn
+  {
+    cursor: pointer;
+    border-style: none;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%px;
+    background-color: rgb(70, 161, 48);
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+.login-btn:hover  {
+   background-color: rgb(23, 73, 19);
+   color: white;
+  }
+.info-p{
+    font-size: 15px;
+     color: dimgray;
+     margin-bottom: 10px;
+  }
+.signup-btn{
+  margin-bottom: 15px;
+}
+.products{
+  width: 100%;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(173, 173, 173);
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  min-height: 900px;     
+  }
+.results-h{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(80, 156, 175);
+  color: white;
+  padding-left: 15px;
+  margin: 15px;
+  }
+.product-items{
+  width: 100%;
+  display: inline-flex;
+  padding-left: 15px;
+}
+.pro-img-h{
+  max-width: 25px;
+  max-height: 25px;
+  width: 10%;
+  font-weight: bold;
+  text-align: left;
+}
+.pro-name-h{
+  width: 50%;
+  font-weight: bold;    
+  padding-left: 5px;
+}
+.pro-price-h{
+  width: 20%;
+  font-weight: bold;
+  padding-left: 5px;
+}
+.pro-shop-h{
+  width: 20%;
+  font-weight: bold;
+  padding-left: 5px;
+}
+.pro-img{
+  max-width: 25px;
+  max-height: 25px;
+  width: 10%;
+}
+.pro-name{
+  width: 50%;
+  padding-left: 5px;
+}
+.pro-price{
+  width: 20%;
+  padding-left: 5px;
+}
+.pro-shop{
+  width: 20%;
+  padding-left: 5px;
+}
+.total-price{
+  text-align: center;
+  background-color: rgb(202, 202, 202);
+  font-weight: bold;
+  padding-left: 15px;
+   margin: 15px;
+}
+.delete-cart-btn{
+  text-align: center;
+  background-color: red;
+  color: white;
+  width: 55px;
+  height: 25px;
+  border-style: none;
+  border-radius: 3px;
+}
+
+.delete-cart-btn:hover {
+  background-color: rgb(202, 0, 0);
+  text-decoration: none;
+  color: white;
+}
+.btn-container {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+}
+.proceed-shoping-btn{
+  text-align: center;
+  background-color: blue;
+  color: white;
+  width: 150px;
+  height: 25px;
+  border-style: none;
+  border-radius: 3px;
+}
+
+.proceed-shoping-btn:hover {
+  background-color: white;
+  text-decoration: none;
+  color: blue;
+  border-style: solid;
+  border-color: blue;
+  border-width: 1px;
+}
+
+.proceed-checkout-btn{
+  text-align: center;
+  background-color: green;
+  color: white;
+  width: 150px;
+  height: 25px;
+  border-style: none;
+  border-radius: 3px;
+  margin-left: 3px;
+}
+
+.proceed-checkout-btn:hover {
+  background-color: white;
+  text-decoration: none;
+  color: green;
+  border-style: solid;
+  border-color: green;
+  border-width: 1px;
+}
+.padding-left{
+padding-left: 15px;
+}

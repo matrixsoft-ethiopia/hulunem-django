@@ -1,0 +1,35 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ ሱቆች</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'business/shop.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid full-body">
+    <div class="row">
+        <div class="col-md-6 ">
+            <p>Description</p>
+
+        </div>
+        <div class="col-md-6 ">
+            <a class="custom-link" href="{% url 'shop:add' %}">
+                <div class="cat">
+                    <h1 class="cat-h">አዲስ ለመመዝገብ</h1>
+                </div>
+            </a>
+            <a class="custom-link" href="{% url 'shop:shops-list' %}">
+                <div class="cat">
+                    <h1 class="cat-h">የተመዘገበ ለመክፈት</h1>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

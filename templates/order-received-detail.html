@@ -1,0 +1,88 @@
+{% extends 'base_layout.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>አዴተራ│ የእቃ ዝርዝር</title>
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'products/products-detail.css' %}">
+<link rel="stylesheet" href="{% static 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'  %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-color">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="category1">
+                <a class='list2' href="{% url 'product:product-list' 1 %}">ኤሌክትሮኒክስ</a>
+                <a class='list2' href="{% url 'product:product-list' 2 %}">የሴቶች አልባሳት </a>
+                <a class='list2' href="{% url 'product:product-list' 3 %}">መዋብያ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 4 %}">የወንዶች አልባሳት</a>
+                <a class='list2' href="{% url 'product:product-list' 5 %}">የልጆች</a>
+                <a class='list2' href="{% url 'product:product-list' 6 %}">የቤት እቃዎች </a>
+                <a class='list2' href="{% url 'product:product-list' 7 %}">ፈርኒቸሮች</a>
+                <a class='list2' href="{% url 'product:product-list' 8 %}">የግምባታ እቃዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 9 %}">ማሽነሪዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 10 %}">የእጅ ስራዎች</a>
+                <a class='list2' href="{% url 'product:product-list' 11 %}">መጽሐፎች</a>
+            </div>
+            <div class="logincontainer">
+                {% if user.is_authenticated %}
+                <h1 class="reg-pro-h">እቃዎችን ለመመዝገብ</h1>
+                <a class="reg-pro-a" href="/products/add/">አዲስ እቃ መዝግብ</a>
+                {% else %}
+                <h1 class="signin-h">መግብያ</h1>
+                <input class="email-input" type="text" placeholder="ኢሜይል">
+                <input class="password-input" type="text" placeholder="የይለፍ ቃል">
+                <input class="checkbox-input" type="checkbox">
+                <p class="stay-p">እንደገቡ ለመቆየት</p>
+                <button class="login-btn">ግባ</button>
+                <p class="info-p">አዲስ ተጠቃሚ ከሆኑ በነጻ ይመዝገቡ</p>
+                <a class="signup-btn" href="accounts/register/">መመዝገብያ</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="products">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="product-items">
+                                <h1 class="results">
+                                    {{productdetail.product.name}}
+                                </h1>
+                                <img src="{{object.product.mainimage.url}}" alt="ተወዳጅ እቃዎች" class="pro-img"><br>
+                                <pre class="pro-detail">{{productdetail.product.detail_text}}</pre><br>
+                                <p class="pro-price">{{productdetail.product.price}} ብር</p>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="shop-description">
+                                <h3 class="shop-name bg-color" name='shopname'>
+                                    ትእዛዝ ሰጭ
+                                </h3>
+                                <p class="shop-detail"><img src="{% static 'products/img/profile-icon.png' %}"
+                                        width="25px" height="25px">
+                                    {{productdetail.user.get_full_name}}</p>
+                                <hr><br>
+                                <h5 class="bg-color">
+                                    የማድረሻ ቦታ
+                                </h5>
+                                <p class="shop-detail"><img src="{% static 'products/img/locaion-icon.png' %}"
+                                        width="25px" height="25px">
+                                    {{productdetail.location1}}, {{productdetail.location2}}, {{productdetail.location3}}</p><br>
+                                <p class="shop-detail"><img src="{% static 'products/img/phone-icon.png' %}"
+                                        width="25px" height="25px">
+                                    {{productdetail.phone_number}}</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
